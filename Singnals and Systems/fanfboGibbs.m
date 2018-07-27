@@ -1,12 +1,12 @@
 clc
 clear
 %Gibbs现象的MATLAB实现
-dt=1e-2;      %曲线图像上各点的间隔
+dt=1e-5;      %曲线图像上各点的间隔
 dn=10;         %最大谐波数的选取步长
 t=-pi:dt:pi;  %生成时间轴，也就是相当于X轴
 omega=1;      % "omega"是角频率的音译
 y=square(t+pi/2,50); 
-%y=square(t,duty)产生一个 2π,幅值为 ±1 的周期性方波, duty表示占空比(duty cycle)
+%y=square(t,ty)产生一个 2π,幅值为 ±1 的周期性方波, duty表示占空比(duty cycle)
 %t+pi/2是将图像向左移，与信号与系统课本第126页上的图形一致
 n_max=[1:dn:79];  %最大谐波数集合
 N=length(n_max); 
@@ -19,7 +19,6 @@ x=b*sin(omega*n'*(t+pi/2));
 %绘图
 %抖个机灵，此处删去了调用了调用 设置画面窗口 Figure 命令，这是做动画的第一步。
 %不删去它图像也是动态的，但不算是动画，你可以改改看一看。删去以后就不会打开很多窗口了，图像将在一个窗口依次显示
-
 plot(t,y);
 hold on;      %与下面的 hold off共同作用，让 x 与 y 的图像显示在一个坐标轴上
 plot(t,x);
